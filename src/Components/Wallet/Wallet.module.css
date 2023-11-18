@@ -1,0 +1,9 @@
+.wallet {
+}
+
+.walletList {
+  display: flex;
+  flex-wrap: true;
+  align-items: center;
+  gap: 1rem;
+}

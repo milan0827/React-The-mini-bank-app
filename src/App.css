@@ -1,0 +1,15 @@
+.app {
+  margin: 2rem 12rem;
+  padding: 2rem;
+  /* border: 2px solid var(--color-white); */
+  background-color: var(--color-white);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  border-radius: 2rem;
+  height: 87vh;
+
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(7, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); */
+  grid-template-rows: 6rem repeat(6, 1fr);
+}

@@ -1,0 +1,40 @@
+.sidebar {
+  grid-row: 2 / -1;
+  grid-column: 1 / 3;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.navList {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.navList li {
+}
+
+.navList li a {
+  padding: 1.5rem;
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.navList li a:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+.navList li a span {
+  margin-left: 1rem;
+}
+
+.navList li:last-child {
+  margin-top: 31.5rem;
+}

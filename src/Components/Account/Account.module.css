@@ -1,0 +1,19 @@
+.account {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.account h1 {
+  font-size: 2rem;
+  color: var(--color-black-2);
+}
+
+.account p {
+  color: var(--color-grey);
+  font-size: 1.6rem;
+}
+
+.account h2 {
+  font-size: 2rem;
+}

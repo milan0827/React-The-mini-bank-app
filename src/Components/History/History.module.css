@@ -1,0 +1,12 @@
+.history {
+}
+
+.transaction {
+  height: 12rem;
+  background-color: var(--color-light-blue);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 0.5rem;
+}

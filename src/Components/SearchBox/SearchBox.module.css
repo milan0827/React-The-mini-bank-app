@@ -1,0 +1,29 @@
+.searchBox {
+  grid-column: 2/ 4;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.searchBox input {
+  width: 95%;
+  padding: 1rem 2rem;
+  background-color: var(--color-light-blue);
+  border: none;
+  border-radius: 5rem;
+  outline: none;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.searchBox input:focus {
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.1);
+}
+
+.glass {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.6rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}

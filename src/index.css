@@ -1,0 +1,68 @@
+:root {
+  --color-black: #080705;
+  --color-red: #dd1c1a;
+  --color-blue: #0e79b2;
+  --color-light-blue: #dbe4ee;
+  --color-white: #fffffa;
+  --color-grey: #d7d7d7;
+  --color-black-2: #3c3c3b;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  background-color: var(--color-light-blue);
+  color: var(--color-black);
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.glassMorphism {
+  border-radius: 10px;
+  background-color: var(--color-light-blue);
+  backdrop-filter: blur(10px);
+  box-shadow: -0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.body-part {
+  background-color: var(--color-white);
+  margin: 0.8rem;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  background-color: var(--color-blue);
+  color: var(--color-grey);
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:active {
+  color: var(--color-white);
+}
