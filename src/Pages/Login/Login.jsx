@@ -1,21 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 
-function Login({ setLogin }) {
+const user = {
+  username: "milan0827",
+  password: "qwerty",
+};
+
+function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isAuth, setIsAuth] = useState(false);
 
-  function handleLogin() {
-    setLogin((e) => !e);
+  function userLogin(username, password) {
+    if (username === user.username && password === user.password)
+      setIsAuth(true);
   }
 
   function handleSumbit(e) {
     e.preventDefault();
-
     if (!username || !password) return;
+
+    userLogin(username, password);
   }
+
+  useEffect(
+    function () {
+      if (isAuth) navigate("/app");
+    },
+    [isAuth, navigate]
+  );
 
   return (
     <form
@@ -23,6 +38,7 @@ function Login({ setLogin }) {
       onSubmit={handleSumbit}
     >
       <h2>RB - The Bank App</h2>
+      {/* {!isAuth && <p>Incorrect username or password</p>} */}
       <div className={styles.formGroup}>
         <label htmlFor="username">Username</label>
         <input
@@ -38,13 +54,11 @@ function Login({ setLogin }) {
           type="text"
           placeholder="password"
           value={password}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      {/* <p>Please login to get access</p>; */}
-      <button className={`${styles.btnLogin} btn`} onClick={handleLogin}>
-        Login
-      </button>
+
+      <button className={`${styles.btnLogin} btn`}>Login</button>
     </form>
   );
 }

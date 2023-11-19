@@ -10,25 +10,28 @@ import Main from "./Components/Main/Main";
 import Transactions from "./Pages/Transactions/Transactions";
 import Messages from "./Pages/Messages/Messages";
 import Services from "./Pages/Services/Services";
+import { AccountProvider } from "./Contexts/accountContexts";
 
 function App() {
-  const [login, setLogin] = useState(true);
-
   return (
     <div className="app">
-      <BrowserRouter>
-        <PageNav />
-        <SideNav />
-        <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route path="login" element={<Login setLogin={setLogin} />} />
-          <Route path="transactions" element={<Transactions />} />
-          <Route path="msg" element={<Messages />} />
-          <Route path="services" element={<Services />} />
-          <Route path="app" element={<Main />}></Route>
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <AccountProvider>
+        <BrowserRouter>
+          <PageNav />
+          <SideNav />
+          <Routes>
+            <Route path="/" element={<Welcome />} />
+            <Route path="login" element={<Login />} />
+            <Route path="transactions" element={<Transactions />} />
+            <Route path="msg" element={<Messages />} />
+            <Route path="services" element={<Services />} />
+            <Route path="app" element={<Main />}>
+              {/* <Route path="account" element={<Body />} /> */}
+            </Route>
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </AccountProvider>
     </div>
   );
 }
