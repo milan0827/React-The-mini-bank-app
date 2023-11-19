@@ -9,8 +9,13 @@
   color: var(--color-black-2);
 }
 
+.account h1 span {
+  color: var(--color-grey-2);
+  font-size: 1.4rem;
+}
+
 .account p {
-  color: var(--color-grey);
+  color: var(--color-grey-2);
   font-size: 1.6rem;
 }
 

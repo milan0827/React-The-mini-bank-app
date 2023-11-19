@@ -5,6 +5,8 @@
   --color-light-blue: #dbe4ee;
   --color-white: #fffffa;
   --color-grey: #d7d7d7;
+  --color-grey: #d7d7d7;
+  --color-grey-2: #999;
   --color-black-2: #3c3c3b;
 }
 
@@ -45,6 +47,11 @@ a {
   box-shadow: -0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
+.page {
+  grid-column: 3 / -1;
+  grid-row: 2 / -1;
+}
+
 .body-part {
   background-color: var(--color-white);
   margin: 0.8rem;
@@ -65,4 +72,8 @@ a {
 .btn:hover,
 .btn:active {
   color: var(--color-white);
+}
+
+.active {
+  color: var(--color-black);
 }

@@ -1,4 +1,4 @@
-import styles from "./Services.module.css";
+import styles from "./Service.module.css";
 import { TbMessageReport } from "react-icons/tb";
 import {
   FaBus,

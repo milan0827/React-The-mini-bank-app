@@ -3,41 +3,42 @@ import { CgLogOut } from "react-icons/cg";
 
 import styles from "./SideNav.module.css";
 import { FaCreditCard, FaMessage, FaServicestack } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
 
 function SideNav() {
   return (
     <nav className={`${styles.sidebar} glassMorphism`}>
       <ul className={styles.navList}>
         <li>
-          <a>
+          <NavLink to="app">
             <FaHome />
             <span>Dashboard</span>
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a>
+          <NavLink to="transactions">
             <FaCreditCard />
-            <span>Payments</span>
-          </a>
+            <span>Transaction</span>
+          </NavLink>
         </li>
         <li>
-          <a>
+          <NavLink to="msg">
             <FaMessage />
             <span>Messages</span>
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a>
+          <NavLink to="services">
             <FaServicestack />
             <span>Services</span>
-          </a>
+          </NavLink>
         </li>
 
         <li>
-          <a>
+          <NavLink>
             <CgLogOut />
             <span>Logout</span>
-          </a>
+          </NavLink>
         </li>
       </ul>
     </nav>
