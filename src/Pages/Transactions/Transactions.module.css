@@ -1,0 +1,29 @@
+.operation {
+  position: relative;
+  padding: 3.7rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.operation h4 {
+  position: absolute;
+  top: 0.5rem;
+  left: 3.5rem;
+}
+
+.operation input {
+  padding: 1rem 1.5rem;
+  background-color: var(--color-light-blue);
+  border: none;
+  border-radius: 5rem;
+  outline: none;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.operation input:focus {
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+}
