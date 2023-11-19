@@ -15,13 +15,13 @@ function Login({ setLogin }) {
     e.preventDefault();
 
     if (!username || !password) return;
-
-    navigate("/app");
-    // setUsername(e.target.value);
   }
 
   return (
-    <form className={`${styles.login} glassMorphism`} onSubmit={handleSumbit}>
+    <form
+      className={`${styles.login} glassMorphism page`}
+      onSubmit={handleSumbit}
+    >
       <h2>RB - The Bank App</h2>
       <div className={styles.formGroup}>
         <label htmlFor="username">Username</label>
@@ -41,6 +41,7 @@ function Login({ setLogin }) {
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
+      {/* <p>Please login to get access</p>; */}
       <button className={`${styles.btnLogin} btn`} onClick={handleLogin}>
         Login
       </button>

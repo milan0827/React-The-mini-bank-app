@@ -1,6 +1,4 @@
 .login {
-  grid-column: 3 / -1;
-  grid-row: 2 / -1;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -11,6 +9,11 @@
 
 .login h2 {
   /* align-self: flex-start; */
+}
+
+.login p {
+  font-size: 1rem;
+  color: var(--color-red);
 }
 
 .formGroup {
