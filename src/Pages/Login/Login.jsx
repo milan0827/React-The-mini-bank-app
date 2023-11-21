@@ -22,6 +22,9 @@ function Login() {
     e.preventDefault();
     if (!username || !password) return;
 
+    if (username !== user.username || password !== user.password)
+      alert("Incorrect username or password");
+
     userLogin(username, password);
   }
 
