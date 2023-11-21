@@ -35,14 +35,15 @@ function reducer(state, action) {
         ...state,
         balance: state.balance - action.payload.amount,
         remarks: action.payload.remarks,
-        receiversName: state.payload.accName,
-        receiversAccoountNumber: state.payload.accNo,
+        receiversName: action.payload.accName,
+        receiversAccoountNumber: action.payload.accNo,
       };
     case "account/requestLoan":
       if (state.loan > 0) return;
       return {
         ...state,
-        balance: state.balance + action.payload,
+        loan: action.payload.amount,
+        balance: state.balance + action.payload.amount,
         loanPurpose: action.payload.purpose,
       };
     case "account/payLoan":
@@ -85,6 +86,25 @@ function AccountProvider({ children }) {
     dispatch({ type: "account/deposit", payload: { amount, remarks } });
   }
 
+  function accountWithdraw(amount, remarks) {
+    dispatch({ type: "account/withdraw", payload: { amount, remarks } });
+  }
+
+  function accountTransfer(amount, remarks, accName, accNo) {
+    dispatch({
+      type: "account/transfer",
+      payload: { amount, remarks, accName, accNo },
+    });
+  }
+
+  function accountRequestLoan(amount, purpose) {
+    dispatch({ type: "account/requestLoan", payload: { amount, purpose } });
+  }
+
+  function accountPayLoan(remarks) {
+    dispatch({ type: "account/payLoan", payload: remarks });
+  }
+
   return (
     <AccountContext.Provider
       value={{
@@ -97,6 +117,10 @@ function AccountProvider({ children }) {
         receiversAccoountNumber,
         isLoading,
         accountDeposit,
+        accountWithdraw,
+        accountTransfer,
+        accountRequestLoan,
+        accountPayLoan,
       }}
     >
       {children}
