@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 const initialState = {
   balance: 0,
@@ -9,6 +9,7 @@ const initialState = {
   receiversName: "",
   receiversAccoountNumber: "",
   isLoading: false,
+  message: "",
 };
 
 function reducer(state, action) {
@@ -20,6 +21,7 @@ function reducer(state, action) {
         ...state,
         balance: state.balance + action.payload.amount,
         remarks: action.payload.remarks,
+        message: `You have deposited ${action.payload.amount}NRs to your account.`,
         isLoading: false,
       };
     case "account/withdraw":
@@ -28,6 +30,7 @@ function reducer(state, action) {
         ...state,
         balance: state.balance - action.payload.amount,
         remarks: action.payload.remarks,
+        message: `You have withdraw ${action.payload.amount}NRs from your account.`,
       };
     case "account/transfer":
       if (state.balance < 10) return;
@@ -37,6 +40,7 @@ function reducer(state, action) {
         remarks: action.payload.remarks,
         receiversName: action.payload.accName,
         receiversAccoountNumber: action.payload.accNo,
+        message: `You have transferred ${action.payload.amount}NRs to ${action.payload.accName}. Account no.: ${action.payload.accNo}.`,
       };
     case "account/requestLoan":
       if (state.loan > 0) return;
@@ -45,6 +49,7 @@ function reducer(state, action) {
         loan: action.payload.amount,
         balance: state.balance + action.payload.amount,
         loanPurpose: action.payload.purpose,
+        message: `You have requested loan ${action.payload.amount}NRs for ${action.payload.purpose}.`,
       };
     case "account/payLoan":
       if (state.balance < state.loan) return;
@@ -52,6 +57,7 @@ function reducer(state, action) {
         ...state,
         balance: state.balance - state.loan,
         remarks: action.payload,
+        message: `You have paid your loan ${state.loan}NRs.`,
       };
     default:
       throw new Error("Unknown action");
@@ -71,6 +77,7 @@ function AccountProvider({ children }) {
       receiversName,
       receiversAccoountNumber,
       isLoading,
+      message,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -121,6 +128,7 @@ function AccountProvider({ children }) {
         accountTransfer,
         accountRequestLoan,
         accountPayLoan,
+        message,
       }}
     >
       {children}
