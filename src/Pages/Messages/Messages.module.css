@@ -1,0 +1,9 @@
+.heading {
+  text-align: center;
+  margin: 4rem;
+}
+
+.msg {
+  padding: 2rem 4rem;
+  background-color: var(--color-white);
+}
