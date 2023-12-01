@@ -1,9 +1,8 @@
-import { useAccount } from "../../Contexts/accountContexts";
+import { useSelector } from "react-redux";
 import styles from "./Messages.module.css";
 
 function Messages() {
-  const { deposit, message } = useAccount();
-  console.log(deposit);
+  const { message } = useSelector((state) => state.account);
 
   return (
     <div className="glassMorphism page ">

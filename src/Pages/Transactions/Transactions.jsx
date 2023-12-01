@@ -1,66 +1,76 @@
 import { useState } from "react";
-import { useAccount } from "../../Contexts/accountContexts";
 import styles from "./Transactions.module.css";
+import { useDispatch } from "react-redux";
+import {
+  accountDeposit,
+  accountPayLoan,
+  accountRequestLoan,
+  accountTransfer,
+  accountWithdraw,
+} from "../../store/accountSlice";
 
 function Transactions() {
-  const [depositAmount, setdepositAmount] = useState(0);
+  const [depositAmount, setdepositAmount] = useState("");
   const [depositDescription, setDepositDescription] = useState("");
 
-  const [withdrawAmount, setWithdrawAmount] = useState(0);
+  const [withdrawAmount, setWithdrawAmount] = useState("");
   const [withdrawDescription, setWithdrawDescription] = useState("");
 
-  const [transferAmount, setTransferAmount] = useState(0);
+  const [transferAmount, setTransferAmount] = useState("");
   const [transferDescription, setTransferDescription] = useState("");
   const [receiverName, setReceiverName] = useState("");
   const [receiverAccNumber, setReceiverAccNumber] = useState("");
 
-  const [requestLoanAmount, setRequestLoanAmount] = useState(0);
+  const [requestLoanAmount, setRequestLoanAmount] = useState("");
   const [requestLoanAmountDesc, setRequestLoanAmountDesc] = useState("");
 
   const [payLoanDesc, setPayLoanDesc] = useState("");
 
-  const {
-    accountDeposit,
-    accountWithdraw,
-    accountTransfer,
-    accountRequestLoan,
-    accountPayLoan,
-  } = useAccount();
-
+  const dispatch = useDispatch();
   function handleDeposit() {
-    accountDeposit(depositAmount, depositDescription);
-    setdepositAmount(0);
+    if (!depositAmount) return;
+
+    dispatch(accountDeposit(depositAmount, depositDescription));
+    setdepositAmount("");
     setDepositDescription("");
   }
 
   function handleWithraw() {
-    accountWithdraw(withdrawAmount, setWithdrawAmount);
-    setWithdrawAmount(0);
+    if (!withdrawAmount) return;
+
+    dispatch(accountWithdraw(withdrawAmount, setWithdrawAmount));
+    setWithdrawAmount("");
     setWithdrawDescription("");
   }
 
   function handleTransfer() {
-    accountTransfer(
-      transferAmount,
-      transferDescription,
-      receiverName,
-      receiverAccNumber
+    if (!transferAmount || !receiverAccNumber || !receiverName) return;
+
+    dispatch(
+      accountTransfer(
+        transferAmount,
+        transferDescription,
+        receiverName,
+        receiverAccNumber
+      )
     );
 
-    setTransferAmount(0);
+    setTransferAmount("");
     setTransferDescription("");
     setReceiverName("");
     setReceiverAccNumber("");
   }
 
   function handleRequestLoan() {
-    accountRequestLoan(requestLoanAmount, requestLoanAmountDesc);
-    setRequestLoanAmount(0);
+    if (!requestLoanAmount) return;
+
+    dispatch(accountRequestLoan(requestLoanAmount, requestLoanAmountDesc));
+    setRequestLoanAmount("");
     setRequestLoanAmountDesc("");
   }
 
   function handlePayLoan() {
-    accountPayLoan(payLoanDesc);
+    dispatch(accountPayLoan(payLoanDesc));
     setPayLoanDesc("");
   }
 
