@@ -1,5 +1,5 @@
 import styles from "./FavAccount.module.css";
-import Image1 from "./../../assets/binode1.jpg";
+import Image1 from "./../../assets/profile.jpg";
 
 function FavAccount() {
   return (
