@@ -1,5 +1,3 @@
-import { createContext, useContext, useReducer } from "react";
-
 const initialState = {
   balance: 0,
   deposit: 0,
@@ -12,7 +10,7 @@ const initialState = {
   message: "",
 };
 
-function reducer(state, action) {
+function reducer(state = initialState, action) {
   switch (action.type) {
     case "account/loading":
       return { ...state, isLoading: true };
@@ -60,87 +58,39 @@ function reducer(state, action) {
         message: `You have paid your loan ${state.loan}NRs.`,
       };
     default:
-      throw new Error("Unknown action");
+      return state;
   }
 }
 
-const AccountContext = createContext();
-
-function AccountProvider({ children }) {
-  const [
-    {
-      balance,
-      deposit,
-      loan,
-      loanPurpose,
-      remarks,
-      receiversName,
-      receiversAccoountNumber,
-      isLoading,
-      message,
-    },
-    dispatch,
-  ] = useReducer(reducer, initialState);
-
-  // useEffect(
-  //   function () {
-  //     dispatch({ type: "account/loading" });
-  //   },
-  //   [balance, deposit, loan]
-  // );
-
-  function accountDeposit(amount, remarks) {
-    dispatch({ type: "account/deposit", payload: { amount, remarks } });
-  }
-
-  function accountWithdraw(amount, remarks) {
-    dispatch({ type: "account/withdraw", payload: { amount, remarks } });
-  }
-
-  function accountTransfer(amount, remarks, accName, accNo) {
-    dispatch({
-      type: "account/transfer",
-      payload: { amount, remarks, accName, accNo },
-    });
-  }
-
-  function accountRequestLoan(amount, purpose) {
-    dispatch({ type: "account/requestLoan", payload: { amount, purpose } });
-  }
-
-  function accountPayLoan(remarks) {
-    dispatch({ type: "account/payLoan", payload: remarks });
-  }
-
-  return (
-    <AccountContext.Provider
-      value={{
-        balance,
-        deposit,
-        loan,
-        loanPurpose,
-        remarks,
-        receiversName,
-        receiversAccoountNumber,
-        isLoading,
-        accountDeposit,
-        accountWithdraw,
-        accountTransfer,
-        accountRequestLoan,
-        accountPayLoan,
-        message,
-      }}
-    >
-      {children}
-    </AccountContext.Provider>
-  );
+function accountDeposit(amount, remarks) {
+  return { type: "account/deposit", payload: { amount, remarks } };
 }
 
-function useAccount() {
-  const context = useContext(AccountContext);
-  if (context === undefined)
-    throw new Error("context was defined outside the AccountContext");
-  return context;
+function accountWithdraw(amount, remarks) {
+  return { type: "account/withdraw", payload: { amount, remarks } };
 }
 
-export { AccountProvider, useAccount };
+function accountTransfer(amount, remarks, accName, accNo) {
+  return {
+    type: "account/transfer",
+    payload: { amount, remarks, accName, accNo },
+  };
+}
+
+function accountRequestLoan(amount, purpose) {
+  return { type: "account/requestLoan", payload: { amount, purpose } };
+}
+
+function accountPayLoan(remarks) {
+  return { type: "account/payLoan", payload: remarks };
+}
+
+export default reducer;
+
+export {
+  accountDeposit,
+  accountWithdraw,
+  accountRequestLoan,
+  accountTransfer,
+  accountPayLoan,
+};
