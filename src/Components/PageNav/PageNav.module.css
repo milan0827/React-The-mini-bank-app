@@ -1,0 +1,33 @@
+.header {
+  grid-column: 1 / -1;
+  grid-row: 1/ 1;
+}
+
+.nav {
+  /* width: 100%; */
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.profile {
+  grid-column: 4 / -1;
+  width: 4rem;
+  height: 4rem;
+  justify-self: flex-end;
+}
+
+.profile img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.profile {
+  margin-right: 2rem;
+  margin-top: -1.5rem;
+}
+
+.profile span {
+  font-size: 1.6rem;
+}
