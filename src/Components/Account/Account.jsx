@@ -3,7 +3,8 @@ import styles from "./Account.module.css";
 
 function Account() {
   const balance = useSelector((state) => state.account.balance);
-  const fullName = useSelector((state) => state.customer.customer);
+  const fullName = useSelector((state) => state.customer.customer);  
+  console.log(balance);
 
   return (
     <div className={`${styles.account} body-part`}>
